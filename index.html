@@ -77,9 +77,10 @@
           <div class="controls"><textarea id="markup" rows="10" name="markup"></textarea></div>
         </div>
       </div>
-      <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Cancel</a><a href="#"
-                                                                                          class="btn btn-primary">Add
-        Slide</a></div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Cancel</a>
+        <a href="#" class="btn btn-primary">Add Slide</a>
+      </div>
     </form>
   </div>
   <div id="playPresentationDialog" role="dialog" aria-labelledby="playPresentationDialogLabel" aria-hidden="true"
@@ -143,28 +144,6 @@
     </li>
   </script>
   <ul id="presentationContainer">
-    <li class="row">
-      <div class="span3">
-        <div id="presentationsBox" class="pptbox">
-          <div class="presentation">
-            <div class="title">Presentation</div>
-            <div class="desc">Description</div>
-            <div class="control">
-              <a href="#" title="Remove the presentation" class="icon trash">
-                <i class="icon-trash">&nbsp;</i></a>
-              <a href="#" title="Add a slide in presentation" class="icon plus">
-                <i class="icon-plus">&nbsp;</i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span9">
-        <div class="sldbox">
-          <ul class="slides">
-          </ul>
-        </div>
-      </div>
-    </li>
   </ul>
   <hr>
   <footer><p>@ UI Bootcamp - III (2013)</p></footer>
@@ -180,22 +159,27 @@
 <script src="lib/underscore.js"></script>
 
 <script type="text/javascript">
-	$('#newPresentation').submit(function(e) {
-	  e.preventDefault();
-		var abc = {
-			title: $('#name').val(),
-			description: $('#description').val()
-	  };
+  $('#newPresentation').submit(function(e) {
+    e.preventDefault();
+    var abc = {
+      title: $('#name').val(),
+      description: $('#description').val()
+    };
 
-		$('#presentationContainer').append(_.template($('#presentationTemplate').html(), abc));
-		$('#addPresentationDialog').modal('hide');
-	});
-	$('#addPresentationDialog').bind('hidden', function() {
-	  $('#name').val('');
-	  $('#description').val('');
-	})
+    $('#presentationContainer').append(_.template($('#presentationTemplate').html(), abc));
+    $('#addPresentationDialog').modal('hide');
+  });
+
+  $('#addPresentationDialog').bind('hidden', function() {
+    $('#name').val('');
+    $('#description').val('');
+  });
+
+  $("body").on('click', '#addSlideDialog .btn-primary', function(e) {
+    e.preventDefault();
+    $('.sldBox .slides').append(_.template($('#slideTemplate').html(), {counter: $("#markup").val()}));
+    $('#addSlideDialog').modal('hide');
+  });
 </script>
-
-
 </body>
 </html>
