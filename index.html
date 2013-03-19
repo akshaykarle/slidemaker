@@ -79,7 +79,7 @@
       </div>
       <div class="modal-footer">
         <a href="#" data-dismiss="modal" class="btn">Cancel</a>
-        <a href="#" class="btn btn-primary">Add Slide</a>
+        <button type="submit" class="btn btn-primary">Add Slide</button>
       </div>
     </form>
   </div>
@@ -124,7 +124,7 @@
               &nbsp;</i></a>
               <a href="#playPresentationDialog" title="Play the presentation" data-toggle="modal"
                                class="icon"> <i class="icon-play">&nbsp;</i></a>
-              <a href="#addSlideDialog" title="Add a slide in presentation" data-toggle="modal" class="icon"> <i
+              <a href="#addSlideDialog" title="Add a slide in presentation" data-toggle="modal" class="icon add-slide" data-counter="<%= counter %>"> <i
                 class="icon-plus">&nbsp;</i></a>
             </div>
           </div>
@@ -132,7 +132,7 @@
       </div>
       <div class="span9">
         <div class="sldbox">
-          <ul class="slides"></ul>
+          <ul class="slides" id="<%= counter %>"></ul>
         </div>
       </div>
     </li>
