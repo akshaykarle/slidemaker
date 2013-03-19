@@ -158,28 +158,6 @@
 <script src="js/bootstrap.js"></script>
 <script src="lib/underscore.js"></script>
 
-<script type="text/javascript">
-  $('#newPresentation').submit(function(e) {
-    e.preventDefault();
-    var abc = {
-      title: $('#name').val(),
-      description: $('#description').val()
-    };
-
-    $('#presentationContainer').append(_.template($('#presentationTemplate').html(), abc));
-    $('#addPresentationDialog').modal('hide');
-  });
-
-  $('#addPresentationDialog').bind('hidden', function() {
-    $('#name').val('');
-    $('#description').val('');
-  });
-
-  $("body").on('click', '#addSlideDialog .btn-primary', function(e) {
-    e.preventDefault();
-    $('.sldBox .slides').append(_.template($('#slideTemplate').html(), {counter: $("#markup").val()}));
-    $('#addSlideDialog').modal('hide');
-  });
-</script>
+<script src="lib/slidemaker.js"></script>
 </body>
 </html>
